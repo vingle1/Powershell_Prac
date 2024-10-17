@@ -1,1 +1,1 @@
-# Repository to practice PowerShell scripting
+# Repository to Practice PowerShell Scripting
