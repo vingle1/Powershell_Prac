@@ -14,10 +14,16 @@ function Say-Hello {
 Say-Hello $name
 
 function Show-OSInfo {
+    try{
     $os = Get-CimInstance Win32_OperatingSystem
     Write-Host "Operating system: $($os.Caption)"
     Write-Host "Version: $($os.Version)"
     Write-Host "Architecture: $($os.OSArchitecture)"
+    } 
+    catch {
+            Write-Host "Unable get that information, due to an error."
+    }
+
 }
 
 function Show-PSVersion {
@@ -26,19 +32,24 @@ function Show-PSVersion {
 }
 
 function Show-UserInfo {
+    try{
     $user = Get-CimInstance Win32_ComputerSystem
     Write-Host "User Name: $($user.UserName)"
     Write-Host "Domain: $($user.Domain)"
+    }
+    catch {
+            Write-Host "Unable to get user information"
+    }
 }
 
 function Show-Menu {
-#Clear-Host
-Write-Host "===================="
+Clear-Host
+Write-Host "=========================="
 Write-Host " System Information Menu"
-Write-Host "===================="
+Write-Host "=========================="
 Write-Host "1. Show Operating system Info"
 Write-Host "2. Show Powershell Version"
-Write-Host "3. Show User Information"
+Write-Host "3. Show User and Domain Information"
 Write-Host "4. Exit"
 
 }
@@ -51,8 +62,8 @@ do{
         1 { Show-OSInfo }
         2 { Show-PSVersion }
         3 { Show-UserInfo }
-        4 { Write-Host "Exiting..."; break }
-        default { Write-Host "Invalid selection , please try again." }
+        4 { Write-Host "Exiting..."; break & exit }
+        default { Write-Host "Invalid choice." }
 
     }
 
