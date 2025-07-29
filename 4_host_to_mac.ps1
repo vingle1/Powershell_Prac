@@ -1,7 +1,7 @@
 #Script to map hostnames to MACs on the same network
 #Author: Ingle
 
-$FatboxNames = @("fatbox1","fatbox2") #change this to your fatbox nbames
+$FatboxNames = @("fatbox1","fatbox2") #change this to your fatbox names
 
 foreach ($FatboxName in $FatboxNames) {
     # fatbox name to IP
